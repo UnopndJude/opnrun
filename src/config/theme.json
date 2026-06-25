@@ -1,0 +1,32 @@
+{
+  "$schema": "https://opnrun.dev/schemas/theme.v1.json",
+  "version": 1,
+  "brand": {
+    "name": "opnrun",
+    "primary": "#146C94",
+    "accent": "#F97316",
+    "success": "#168A4A",
+    "ink": "#18212F",
+    "surface": "#F7FAFC",
+    "logo": "/brand/opnrun-mark.svg"
+  },
+  "event": {
+    "eyebrow": "Registration opens soon",
+    "status": "Mock reservation flow",
+    "heroAlt": "opnrun event mark"
+  },
+  "sponsors": [
+    {
+      "name": "Pace Lab",
+      "tier": "Timing"
+    },
+    {
+      "name": "Hydro Seoul",
+      "tier": "Hydration"
+    },
+    {
+      "name": "Form Athletics",
+      "tier": "Kit"
+    }
+  ]
+}

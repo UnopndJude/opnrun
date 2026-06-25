@@ -1,0 +1,143 @@
+{
+  "$schema": "https://opnrun.dev/schemas/form-schema.v1.json",
+  "version": 1,
+  "event": {
+    "id": "opnrun-seoul-2026",
+    "name": "opnrun Seoul 10K",
+    "date": "2026-10-18",
+    "location": "Seoul, Korea",
+    "capacity": 5000
+  },
+  "sections": [
+    {
+      "id": "participant",
+      "title": "Participant",
+      "description": "Runner identity and contact details.",
+      "fields": [
+        {
+          "id": "fullName",
+          "label": "Full name",
+          "type": "text",
+          "required": true,
+          "placeholder": "Kim Minjun",
+          "autocomplete": "name",
+          "maxLength": 80
+        },
+        {
+          "id": "email",
+          "label": "Email",
+          "type": "email",
+          "required": true,
+          "placeholder": "runner@example.com",
+          "autocomplete": "email",
+          "maxLength": 120
+        },
+        {
+          "id": "phone",
+          "label": "Mobile number",
+          "type": "tel",
+          "required": true,
+          "placeholder": "010-1234-5678",
+          "autocomplete": "tel",
+          "maxLength": 30
+        }
+      ]
+    },
+    {
+      "id": "race",
+      "title": "Race",
+      "description": "Distance, kit, and starting group signals.",
+      "fields": [
+        {
+          "id": "distance",
+          "label": "Distance",
+          "type": "radio",
+          "required": true,
+          "options": [
+            {
+              "label": "10K",
+              "value": "10k",
+              "description": "Road course"
+            },
+            {
+              "label": "Half marathon",
+              "value": "half",
+              "description": "21.0975 km"
+            }
+          ]
+        },
+        {
+          "id": "shirtSize",
+          "label": "Shirt size",
+          "type": "select",
+          "required": true,
+          "options": [
+            {
+              "label": "XS",
+              "value": "xs"
+            },
+            {
+              "label": "S",
+              "value": "s"
+            },
+            {
+              "label": "M",
+              "value": "m"
+            },
+            {
+              "label": "L",
+              "value": "l"
+            },
+            {
+              "label": "XL",
+              "value": "xl"
+            }
+          ]
+        },
+        {
+          "id": "recordProofUrl",
+          "label": "Record proof URL",
+          "type": "url",
+          "required": false,
+          "placeholder": "https://...",
+          "maxLength": 240
+        },
+        {
+          "id": "shuttleBus",
+          "label": "Reserve shuttle bus",
+          "type": "checkbox",
+          "required": false
+        }
+      ]
+    },
+    {
+      "id": "safety",
+      "title": "Safety",
+      "description": "Emergency contact and required consent.",
+      "fields": [
+        {
+          "id": "emergencyContact",
+          "label": "Emergency contact",
+          "type": "text",
+          "required": true,
+          "placeholder": "Name / phone",
+          "maxLength": 120
+        },
+        {
+          "id": "medicalNotes",
+          "label": "Medical notes",
+          "type": "textarea",
+          "required": false,
+          "placeholder": "Allergies, conditions, or medication",
+          "maxLength": 400
+        },
+        {
+          "id": "privacyConsent",
+          "label": "I agree to event registration data processing.",
+          "type": "checkbox",
+          "required": true
+        }
+      ]
+    }
+  ]
+}
