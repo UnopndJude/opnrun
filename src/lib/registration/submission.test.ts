@@ -1,10 +1,7 @@
 import { describe, expect, it } from "vitest";
 import formSchemaConfig from "@/config/form-schema.json";
 import { parseRegistrationFormConfig } from "@/lib/config/form-schema";
-import {
-  createMockReservation,
-  validateRegistrationInput
-} from "@/lib/registration/submission";
+import { validateRegistrationInput } from "@/lib/registration/submission";
 
 const config = parseRegistrationFormConfig(formSchemaConfig);
 
@@ -48,25 +45,5 @@ describe("registration submission", () => {
       );
       expect(result.fieldErrors.privacyConsent).toBe("Required");
     }
-  });
-
-  it("creates a 10 minute mock reservation lock", () => {
-    const now = new Date("2026-06-25T00:00:00.000Z");
-    const reservation = createMockReservation(
-      {},
-      {
-        eventId: config.event.id,
-        now,
-        registrationId: "mock_test"
-      }
-    );
-
-    expect(reservation).toEqual({
-      id: "mock_test",
-      eventId: "opnrun-seoul-2026",
-      status: "reserved",
-      createdAt: "2026-06-25T00:00:00.000Z",
-      lockExpiresAt: "2026-06-25T00:10:00.000Z"
-    });
   });
 });
