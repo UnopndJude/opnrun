@@ -11,6 +11,7 @@
 3. [AI-First DX (Developer Experience) 규격](#3-ai-first-dx-developer-experience-규격)
 4. [클라우드 아키텍처 설계 (Vercel, Cloudflare, AWS)](#4-클라우드-아키텍처-설계-vercel-cloudflare-aws)
 5. [보안 및 규정 준수 (Security & Compliance)](#5-보안-및-규정-준수-security--compliance)
+6. [현재 구현 상태 및 개발](#6-현재-구현-상태-및-개발)
 
 ---
 
@@ -207,6 +208,21 @@ export async function middleware(req: NextRequest) {
 * **개인정보의 안전한 암호화 저장**: 마라톤 접수 특성상 주민등록번호(보험용), 주소, 연락처 등의 중요 개인정보가 포함됩니다 [287]. 모든 개인정보는 DB 레이어 진입 전 단방향 및 양방향(AES-256) 암호화 알고리즘이 자동으로 결합되도록 기본 훅(Pre-save Hook)을 내장합니다.
 * **이벤트 종료 후 자동 퍼지(Purge) 스크립트**: 대회가 안전하게 완전히 종료되고 주최 정산이 마무리되는 30일 시점에 맞춰, 주최측의 법적 리스크를 줄이기 위해 유저 개인정보 컬럼만 일괄 삭제(Masking/Anonymize)하는 **Compliant Auto-Purge Scheduler**가 기본 탑재됩니다.
 * **최근 보안 인시던트 대응(Secret Rotation Guide)**: 2026년 Vercel 시스템의 비인가 접근 사태와 같은 보안 긴급 대응 지침을 포함합니다 [229]. `opnrun` 프로젝트는 Upstash의 Read-only Token을 분리 적용하고, 비상 상황 시 CLI 명령어 하나로 연동 키와 패스워드를 다운타임 없이 일방향 로테이션할 수 있는 보안 스크립트 세트를 함께 제공합니다 [228, 234].
+
+---
+
+## 6. 현재 구현 상태 및 개발
+
+현재 웹은 Next.js App Router 기반이며, `src/config/form-schema.json`과 `src/config/theme.json`을 읽어 등록 화면을 렌더링합니다. 제출은 서버 액션에서 Zod 기반 설정 검증과 필드 검증을 거친 뒤, 10분짜리 mock reservation lock을 반환합니다. 실제 Upstash Redis 대기열, 결제 webhook, 영속 DB 저장은 다음 단계입니다.
+
+```bash
+npm install
+npm run dev
+npm test
+npm run typecheck
+npm run lint
+npm run build
+```
 
 ---
 본 오픈소스 프로젝트에 참여하여 대한민국 러너들의 오픈런 스트레스를 해결하고, 건강한 스포츠 테크 생태계를 함께 만들어 가시길 기대합니다. 

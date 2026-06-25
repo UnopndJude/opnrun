@@ -1,0 +1,19 @@
+# opnrun AI Code-Gen Rules
+
+rules:
+  - name: Keep Queue Immutable
+    pattern: src/lib/queue/**
+    action: warn
+    message: Queue code controls admission and payment consistency. Prefer config-only changes unless the task explicitly targets queue behavior.
+  - name: Keep Payment Ledger Explicit
+    pattern: src/lib/payment/**
+    action: warn
+    message: Payment ledger changes require idempotency tests and webhook replay coverage.
+  - name: Config First Customization
+    pattern: src/config/**
+    action: allow
+    message: Event fields, theme colors, and sponsor labels should be changed here before touching core code.
+  - name: Strict Type Safety
+    pattern: src/**/*.ts
+    action: enforce
+    message: Use Zod validation and strict TypeScript types. Do not introduce implicit any values.

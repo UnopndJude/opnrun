@@ -1,3 +1,10 @@
 .DS_Store
 *.swp
 *.swo
+node_modules/
+.next/
+out/
+coverage/
+.env
+.env*.local
+*.tsbuildinfo
