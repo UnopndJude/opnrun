@@ -210,5 +210,6 @@ export async function middleware(req: NextRequest) {
 
 ---
 본 오픈소스 프로젝트에 참여하여 대한민국 러너들의 오픈런 스트레스를 해결하고, 건강한 스포츠 테크 생태계를 함께 만들어 가시길 기대합니다. 
-**Distributed under the MIT License. Contributions are always welcome!**
+**Distributed under the GNU Affero General Public License v3.0 only (`AGPL-3.0-only`). Contributions are always welcome!**
 
+See [LICENSE](LICENSE) for the full license text.
