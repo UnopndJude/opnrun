@@ -3,8 +3,9 @@ import type {
   RegistrationFormConfig
 } from "@/lib/config/form-schema";
 import { getFormFields } from "@/lib/config/form-schema";
+import type { RegistrationValue } from "@/lib/registration/domain/reservation";
 
-export type RegistrationValue = string | boolean;
+export type { RegistrationValue } from "@/lib/registration/domain/reservation";
 export type RegistrationInput = Record<string, RegistrationValue | undefined>;
 
 export type ValidationResult =
@@ -16,12 +17,6 @@ export type ValidationResult =
       ok: false;
       fieldErrors: Record<string, string>;
     };
-
-type ReservationOptions = {
-  eventId: string;
-  now?: Date;
-  registrationId?: string;
-};
 
 export function formDataToRegistrationInput(
   formData: FormData
@@ -64,22 +59,6 @@ export function validateRegistrationInput(
   return {
     ok: true,
     data
-  };
-}
-
-export function createMockReservation(
-  _data: Record<string, RegistrationValue>,
-  options: ReservationOptions
-) {
-  const now = options.now ?? new Date();
-  const lockExpiresAt = new Date(now.getTime() + 10 * 60 * 1000);
-
-  return {
-    id: options.registrationId ?? `mock_${crypto.randomUUID()}`,
-    eventId: options.eventId,
-    status: "reserved" as const,
-    createdAt: now.toISOString(),
-    lockExpiresAt: lockExpiresAt.toISOString()
   };
 }
 

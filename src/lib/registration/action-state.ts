@@ -1,3 +1,5 @@
+import type { Reservation } from "@/lib/registration/domain/reservation";
+
 export type RegistrationActionState =
   | {
       status: "idle";
@@ -13,13 +15,7 @@ export type RegistrationActionState =
       status: "success";
       fieldErrors: Record<string, string>;
       message: string;
-      reservation: {
-        id: string;
-        eventId: string;
-        status: "reserved";
-        createdAt: string;
-        lockExpiresAt: string;
-      };
+      reservation: Reservation;
     };
 
 export const initialRegistrationState: RegistrationActionState = {
